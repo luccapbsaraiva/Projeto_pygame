@@ -1,5 +1,6 @@
 import pygame
 import random
+import sys
 
 pygame.init()
 
@@ -7,6 +8,8 @@ window = pygame.display.set_mode((800, 600 ))
 pygame.display.set_caption('Botões')
 
 font = pygame.font.SysFont(None, 48)
+imagem = pygame.image.load("som/voceperdeu.jpg")
+imagem = pygame.transform.scale(imagem, (800, 600))
 
 
 vermelho = (100, 0, 0)
@@ -177,8 +180,11 @@ while game:
             tentativa = []
             seq = []
             seq.append(random.choice(botoes))
-            aguardando = False
+            window.blit(imagem,(0,0))
+            pygame.display.update()
             pygame.time.wait(2000)
+            aguardando = False
+            
 
     
     if seq == tentativa:
@@ -206,3 +212,4 @@ while game:
     pygame.display.update()
 
 pygame.quit()
+sys.exit()
