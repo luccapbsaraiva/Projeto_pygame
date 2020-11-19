@@ -46,8 +46,8 @@ FPS = 60
 vel = 50
 game = True
 
-botoes = [botao_verm, botao_verde, botao_azul, botao_amar,botao_laranja]
-botoes_novos = [botao_roxo, botao_a_piscina, botao_branco]  #colocar na lista botoes qnd eles puderem ser usados
+botoes = [botao_verm, botao_verde, botao_azul, botao_amar,botao_laranja,botao_roxo]
+botoes_novos = [botao_a_piscina, botao_branco]  #colocar na lista botoes qnd eles puderem ser usados
 seq = []
 score = 0
 tentativa = []
@@ -194,7 +194,32 @@ while game:
                 pygame.draw.rect(window, branco, botao_branco)
                 pygame.display.update()
                 pygame.time.wait(500)    
-            
+            elif botao == botao_roxo:
+                roxo = (220,0,128)
+                pygame.draw.rect(window, azul, botao_azul)
+                pygame.draw.rect(window, vermelho, botao_verm)
+                pygame.draw.rect(window, amarelo, botao_amar)
+                pygame.draw.rect(window, verde, botao_verde)
+                pygame.draw.rect(window, azul, botao_azul)
+                pygame.draw.rect(window, roxo, botao_roxo)
+                pygame.draw.rect(window, laranja, botao_laranja)
+                pygame.draw.rect(window, a_piscina, botao_a_piscina)
+                pygame.draw.rect(window, branco, botao_branco)
+                pygame.display.update()
+                assets['pew_sound'].play()
+                pygame.time.wait(500)
+                roxo = (128,0,128)
+                pygame.draw.rect(window, azul, botao_azul)
+                pygame.draw.rect(window, vermelho, botao_verm)
+                pygame.draw.rect(window, amarelo, botao_amar)
+                pygame.draw.rect(window, verde, botao_verde)
+                pygame.draw.rect(window, azul, botao_azul)
+                pygame.draw.rect(window, roxo, botao_roxo)
+                pygame.draw.rect(window, laranja, botao_laranja)
+                pygame.draw.rect(window, a_piscina, botao_a_piscina)
+                pygame.draw.rect(window, branco, botao_branco)
+                pygame.display.update()
+                pygame.time.wait(500) 
             
         aguardando = True
 
@@ -261,6 +286,17 @@ while game:
                 pygame.draw.rect(window,laranja,botao_laranja)
                 pygame.display.update()
                 tentativa.append(botao_laranja)
+            elif event.key == pygame.K_e:
+                botao_escolhido = botao_roxo
+                roxo = (220,0,128)
+                pygame.draw.rect(window,roxo,botao_roxo)
+                pygame.display.update()
+                assets['pew_sound'].play()
+                pygame.time.wait(500)
+                roxo = (128,0,128)
+                pygame.draw.rect(window,roxo,botao_roxo)
+                pygame.display.update()
+                tentativa.append(botao_roxo)
             elif event.key == pygame.K_SPACE:
                 aguardando = False
     for botao in tentativa:
