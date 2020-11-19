@@ -4,18 +4,23 @@ import sys
 
 pygame.init()
 
-window = pygame.display.set_mode((800, 600 ))
+window = pygame.display.set_mode((1250, 600 ))
 pygame.display.set_caption('Botões')
 
 font = pygame.font.SysFont(None, 48)
 imagem = pygame.image.load("som/voceperdeu.jpg")
-imagem = pygame.transform.scale(imagem, (800, 600))
+imagem = pygame.transform.scale(imagem, (1250, 600))
 
 
 vermelho = (100, 0, 0)
 verde = (0, 100, 0)
 amarelo = (100, 100, 0)
 azul = (0, 0, 100)
+roxo= (128, 0, 128)
+laranja= (150, 80, 0)
+a_piscina= (0, 128, 128)
+branco = (128, 128, 128)
+cores = [vermelho, verde, azul, amarelo, roxo, laranja, a_piscina, branco]
 vermelho_claro = (255, 0, 0)
 
 
@@ -27,9 +32,13 @@ assets['pew_sound'] = pygame.mixer.Sound('som\pew.wav')
 
 
 botao_verm = pygame.Rect(150, 50, 200, 200)
-botao_verde = pygame.Rect(450, 50, 200, 200)
+botao_verde = pygame.Rect(400, 50, 200, 200)
 botao_amar = pygame.Rect(150, 300, 200, 200)
-botao_azul = pygame.Rect(450, 300, 200, 200)
+botao_azul = pygame.Rect(400, 300, 200, 200)
+botao_roxo = pygame.Rect(650, 50, 200, 200)
+botao_laranja = pygame.Rect(650, 300, 200, 200)
+botao_a_piscina = pygame.Rect(900, 50, 200, 200)
+botao_branco = pygame.Rect(900, 300, 200, 200)
 clock = pygame.time.Clock()
 FPS = 60
 vel = 50
@@ -203,6 +212,10 @@ while game:
     pygame.draw.rect(window, amarelo, botao_amar)
     pygame.draw.rect(window, verde, botao_verde)
     pygame.draw.rect(window, azul, botao_azul)
+    pygame.draw.rect(window, roxo, botao_roxo)
+    pygame.draw.rect(window, laranja, botao_laranja)
+    pygame.draw.rect(window, a_piscina, botao_a_piscina)
+    pygame.draw.rect(window, branco, botao_branco)
     font = pygame.font.SysFont(None, 48)
     text_surface = font.render("{:01d}".format(score), True, (255, 255, 255))
     text_rect = text_surface.get_rect()
