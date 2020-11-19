@@ -10,6 +10,8 @@ pygame.display.set_caption('Botões')
 font = pygame.font.SysFont(None, 48)
 imagem = pygame.image.load("som/voceperdeu.jpg")
 imagem = pygame.transform.scale(imagem, (1250, 600))
+imagem2= pygame.image.load("som/start.png")
+imagem2 = pygame.transform.scale(imagem2, (1250, 600))
 
 
 vermelho = (100, 0, 0)
@@ -50,6 +52,13 @@ score = 0
 tentativa = []
 seq.append(random.choice(botoes))
 aguardando = False
+inicio = True
+while inicio:
+    window.blit(imagem2,(0,0))
+    pygame.display.update()
+    for event in pygame.event.get():
+        if event.type == pygame.KEYUP:
+            inicio = False
 while game:
     clock.tick(FPS)
     pygame.time.wait(500)
