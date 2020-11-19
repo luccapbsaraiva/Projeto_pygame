@@ -169,7 +169,7 @@ while game:
                 pygame.display.update()
                 pygame.time.wait(500)
             elif botao == botao_laranja:
-                laranja = (200,80,0)
+                laranja = (250,80,0)
                 pygame.draw.rect(window, azul, botao_azul)
                 pygame.draw.rect(window, vermelho, botao_verm)
                 pygame.draw.rect(window, amarelo, botao_amar)
@@ -252,7 +252,7 @@ while game:
                 tentativa.append(botao_azul)
             elif event.key == pygame.K_d:
                 botao_escolhido = botao_laranja
-                laranja = (200,80,0)
+                laranja = (250,80,0)
                 pygame.draw.rect(window,laranja,botao_laranja)
                 pygame.display.update()
                 assets['pew_sound'].play()
