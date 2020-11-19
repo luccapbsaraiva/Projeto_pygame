@@ -46,8 +46,8 @@ FPS = 60
 vel = 50
 game = True
 
-botoes = [botao_verm, botao_verde, botao_azul, botao_amar,botao_laranja,botao_roxo]
-botoes_novos = [botao_a_piscina, botao_branco]  #colocar na lista botoes qnd eles puderem ser usados
+botoes = [botao_verm, botao_verde, botao_azul, botao_amar,botao_laranja,botao_roxo,botao_a_piscina]
+botoes_novos = [botao_branco]  #colocar na lista botoes qnd eles puderem ser usados
 seq = []
 score = 0
 tentativa = []
