@@ -52,6 +52,7 @@ seq = []
 score = 0
 tentativa = []
 seq.append(random.choice(botoes))
+text = font.render('os botoes de jogo são: Q W E R A S D F', True, (0, 0, 255))
 aguardando = False
 inicio = True
 while inicio:
@@ -61,7 +62,11 @@ while inicio:
         if event.type == pygame.KEYUP:
             inicio = False
 pygame.time.wait(2000)
-window.fill((0, 0, 0))
+window.fill((0,0,0))
+window.blit(text,(200,250))
+pygame.display.update()   
+pygame.time.wait(3000)
+window.fill((0,0,0))
 pygame.display.update()   
 pygame.time.wait(500)
 while game:
