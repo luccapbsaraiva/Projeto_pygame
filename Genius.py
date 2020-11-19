@@ -60,6 +60,7 @@ while inicio:
     for event in pygame.event.get():
         if event.type == pygame.KEYUP:
             inicio = False
+pygame.time.wait(2000)            
 while game:
     clock.tick(FPS)
     pygame.time.wait(500)
