@@ -22,8 +22,17 @@ roxo= (128, 0, 128)
 laranja= (150, 80, 0)
 a_piscina= (0, 128, 128)
 branco = (128, 128, 128)
-cores = [vermelho, verde, azul, amarelo, roxo, laranja, a_piscina, branco]
+cor = [vermelho, verde, azul, amarelo, roxo, laranja, a_piscina, branco]
+
 vermelho_claro = (255, 0, 0)
+verde_claro =  (0, 255, 0)
+amarelo_claro = (255, 255, 0)
+azul_claro = (0, 0, 255)
+roxo_claro = (255, 0, 255)
+laranja_claro = (255, 128, 0)
+a_piscina_claro = (0, 255, 255)
+branco_claro = (255, 255, 255)
+aceso = [vermelho_claro, verde_claro, azul_claro, amarelo_claro, roxo_claro, laranja_claro, a_piscina_claro, branco_claro]
 
 
 
@@ -46,12 +55,12 @@ FPS = 60
 vel = 50
 game = True
 
-botoes = [botao_verm, botao_verde, botao_azul, botao_amar,botao_laranja,botao_roxo,botao_a_piscina]
-botoes_novos = [botao_branco]  #colocar na lista botoes qnd eles puderem ser usados
+botoes = [botao_verm, botao_verde, botao_azul, botao_amar, botao_roxo, botao_laranja, botao_a_piscina, botao_branco]
+
 seq = []
 score = 0
 tentativa = []
-seq.append(random.choice(botoes))
+seq.append(random.randint(0, 8))
 text = font.render('os botoes de jogo são: Q W E R A S D F', True, (0, 0, 255))
 aguardando = False
 inicio = True
@@ -69,191 +78,36 @@ pygame.time.wait(3000)
 window.fill((0,0,0))
 pygame.display.update()   
 pygame.time.wait(500)
+
+def pisca(s):
+    pygame.draw.rect(window, aceso[s], botoes[s])
+    pygame.draw.rect(window, cor[s-1], botoes[s-1])
+    pygame.draw.rect(window, cor[s-2], botoes[s-2])
+    pygame.draw.rect(window, cor[s-3], botoes[s-3])
+    pygame.draw.rect(window, cor[s-4], botoes[s-4])
+    pygame.draw.rect(window, cor[s-5], botoes[s-5])
+    pygame.draw.rect(window, cor[s-6], botoes[s-6])
+    pygame.draw.rect(window, cor[s-7], botoes[s-7])
+    pygame.display.update()
+    assets['pew_sound'].play()
+    pygame.time.wait(500)
+    pygame.draw.rect(window, vermelho, botao_verm)
+    pygame.draw.rect(window, amarelo, botao_amar)
+    pygame.draw.rect(window, verde, botao_verde)
+    pygame.draw.rect(window, azul, botao_azul)
+    pygame.draw.rect(window, roxo, botao_roxo)
+    pygame.draw.rect(window, laranja, botao_laranja)
+    pygame.draw.rect(window, a_piscina, botao_a_piscina)
+    pygame.draw.rect(window, branco, botao_branco)
+    pygame.display.update()
+    pygame.time.wait(500)
+    
 while game:
     clock.tick(FPS)
     pygame.time.wait(500)
     while aguardando == False: 
         for botao in seq:
-            if botao == botao_verm:
-                vermelho = vermelho_claro
-                pygame.draw.rect(window, vermelho, botao_verm)
-                pygame.draw.rect(window, amarelo, botao_amar)
-                pygame.draw.rect(window, verde, botao_verde)
-                pygame.draw.rect(window, azul, botao_azul)
-                pygame.draw.rect(window, roxo, botao_roxo)
-                pygame.draw.rect(window, laranja, botao_laranja)
-                pygame.draw.rect(window, a_piscina, botao_a_piscina)
-                pygame.draw.rect(window, branco, botao_branco)
-                pygame.display.update()
-                assets['pew_sound'].play()
-                pygame.time.wait(500)
-                vermelho = (100, 0, 0)
-                pygame.draw.rect(window, vermelho, botao_verm)
-                pygame.draw.rect(window, amarelo, botao_amar)
-                pygame.draw.rect(window, verde, botao_verde)
-                pygame.draw.rect(window, azul, botao_azul)
-                pygame.draw.rect(window, roxo, botao_roxo)
-                pygame.draw.rect(window, laranja, botao_laranja)
-                pygame.draw.rect(window, a_piscina, botao_a_piscina)
-                pygame.draw.rect(window, branco, botao_branco)
-                pygame.display.update()
-                pygame.time.wait(500)
-            elif botao == botao_verde:
-                verde = (0, 255, 0)
-                pygame.draw.rect(window, verde, botao_verde)
-                pygame.draw.rect(window, vermelho, botao_verm)
-                pygame.draw.rect(window, amarelo, botao_amar)
-                pygame.draw.rect(window, verde, botao_verde)
-                pygame.draw.rect(window, azul, botao_azul)
-                pygame.draw.rect(window, roxo, botao_roxo)
-                pygame.draw.rect(window, laranja, botao_laranja)
-                pygame.draw.rect(window, a_piscina, botao_a_piscina)
-                pygame.draw.rect(window, branco, botao_branco)
-                pygame.display.update()
-                assets['pew_sound'].play()
-                pygame.time.wait(500)
-                verde = (0, 100, 0)
-                pygame.draw.rect(window, verde, botao_verde)
-                pygame.draw.rect(window, vermelho, botao_verm)
-                pygame.draw.rect(window, amarelo, botao_amar)
-                pygame.draw.rect(window, verde, botao_verde)
-                pygame.draw.rect(window, azul, botao_azul)
-                pygame.draw.rect(window, roxo, botao_roxo)
-                pygame.draw.rect(window, laranja, botao_laranja)
-                pygame.draw.rect(window, a_piscina, botao_a_piscina)
-                pygame.draw.rect(window, branco, botao_branco)
-                pygame.display.update()
-                pygame.time.wait(500)
-            elif botao == botao_amar:
-                amarelo = (255, 255, 0)
-                pygame.draw.rect(window, amarelo, botao_amar)
-                pygame.draw.rect(window, vermelho, botao_verm)
-                pygame.draw.rect(window, amarelo, botao_amar)
-                pygame.draw.rect(window, verde, botao_verde)
-                pygame.draw.rect(window, azul, botao_azul)
-                pygame.draw.rect(window, roxo, botao_roxo)
-                pygame.draw.rect(window, laranja, botao_laranja)
-                pygame.draw.rect(window, a_piscina, botao_a_piscina)
-                pygame.draw.rect(window, branco, botao_branco)
-                pygame.display.update()
-                assets['pew_sound'].play()
-                pygame.time.wait(500)
-                amarelo = (100, 100, 0)
-                pygame.draw.rect(window, amarelo, botao_amar)
-                pygame.draw.rect(window, vermelho, botao_verm)
-                pygame.draw.rect(window, amarelo, botao_amar)
-                pygame.draw.rect(window, verde, botao_verde)
-                pygame.draw.rect(window, azul, botao_azul)
-                pygame.draw.rect(window, roxo, botao_roxo)
-                pygame.draw.rect(window, laranja, botao_laranja)
-                pygame.draw.rect(window, a_piscina, botao_a_piscina)
-                pygame.draw.rect(window, branco, botao_branco)
-                pygame.display.update()
-                pygame.time.wait(500)
-            elif botao == botao_azul:
-                azul = (0, 0, 255)
-                pygame.draw.rect(window, azul, botao_azul)
-                pygame.draw.rect(window, vermelho, botao_verm)
-                pygame.draw.rect(window, amarelo, botao_amar)
-                pygame.draw.rect(window, verde, botao_verde)
-                pygame.draw.rect(window, azul, botao_azul)
-                pygame.draw.rect(window, roxo, botao_roxo)
-                pygame.draw.rect(window, laranja, botao_laranja)
-                pygame.draw.rect(window, a_piscina, botao_a_piscina)
-                pygame.draw.rect(window, branco, botao_branco)
-                pygame.display.update()
-                assets['pew_sound'].play()
-                pygame.time.wait(500)
-                azul = (0, 0, 100)
-                pygame.draw.rect(window, azul, botao_azul)
-                pygame.draw.rect(window, vermelho, botao_verm)
-                pygame.draw.rect(window, amarelo, botao_amar)
-                pygame.draw.rect(window, verde, botao_verde)
-                pygame.draw.rect(window, azul, botao_azul)
-                pygame.draw.rect(window, roxo, botao_roxo)
-                pygame.draw.rect(window, laranja, botao_laranja)
-                pygame.draw.rect(window, a_piscina, botao_a_piscina)
-                pygame.draw.rect(window, branco, botao_branco)
-                pygame.display.update()
-                pygame.time.wait(500)
-            elif botao == botao_laranja:
-                laranja = (250,80,0)
-                pygame.draw.rect(window, azul, botao_azul)
-                pygame.draw.rect(window, vermelho, botao_verm)
-                pygame.draw.rect(window, amarelo, botao_amar)
-                pygame.draw.rect(window, verde, botao_verde)
-                pygame.draw.rect(window, azul, botao_azul)
-                pygame.draw.rect(window, roxo, botao_roxo)
-                pygame.draw.rect(window, laranja, botao_laranja)
-                pygame.draw.rect(window, a_piscina, botao_a_piscina)
-                pygame.draw.rect(window, branco, botao_branco)
-                pygame.display.update()
-                assets['pew_sound'].play()
-                pygame.time.wait(500)
-                laranja = (150,80,0)
-                pygame.draw.rect(window, azul, botao_azul)
-                pygame.draw.rect(window, vermelho, botao_verm)
-                pygame.draw.rect(window, amarelo, botao_amar)
-                pygame.draw.rect(window, verde, botao_verde)
-                pygame.draw.rect(window, azul, botao_azul)
-                pygame.draw.rect(window, roxo, botao_roxo)
-                pygame.draw.rect(window, laranja, botao_laranja)
-                pygame.draw.rect(window, a_piscina, botao_a_piscina)
-                pygame.draw.rect(window, branco, botao_branco)
-                pygame.display.update()
-                pygame.time.wait(500)    
-            elif botao == botao_roxo:
-                roxo = (220,0,128)
-                pygame.draw.rect(window, azul, botao_azul)
-                pygame.draw.rect(window, vermelho, botao_verm)
-                pygame.draw.rect(window, amarelo, botao_amar)
-                pygame.draw.rect(window, verde, botao_verde)
-                pygame.draw.rect(window, azul, botao_azul)
-                pygame.draw.rect(window, roxo, botao_roxo)
-                pygame.draw.rect(window, laranja, botao_laranja)
-                pygame.draw.rect(window, a_piscina, botao_a_piscina)
-                pygame.draw.rect(window, branco, botao_branco)
-                pygame.display.update()
-                assets['pew_sound'].play()
-                pygame.time.wait(500)
-                roxo = (128,0,128)
-                pygame.draw.rect(window, azul, botao_azul)
-                pygame.draw.rect(window, vermelho, botao_verm)
-                pygame.draw.rect(window, amarelo, botao_amar)
-                pygame.draw.rect(window, verde, botao_verde)
-                pygame.draw.rect(window, azul, botao_azul)
-                pygame.draw.rect(window, roxo, botao_roxo)
-                pygame.draw.rect(window, laranja, botao_laranja)
-                pygame.draw.rect(window, a_piscina, botao_a_piscina)
-                pygame.draw.rect(window, branco, botao_branco)
-                pygame.display.update()
-                pygame.time.wait(500) 
-            elif botao == botao_a_piscina:
-                a_piscina=(0,128,190)
-                pygame.draw.rect(window, azul, botao_azul)
-                pygame.draw.rect(window, vermelho, botao_verm)
-                pygame.draw.rect(window, amarelo, botao_amar)
-                pygame.draw.rect(window, verde, botao_verde)
-                pygame.draw.rect(window, azul, botao_azul)
-                pygame.draw.rect(window, roxo, botao_roxo)
-                pygame.draw.rect(window, laranja, botao_laranja)
-                pygame.draw.rect(window, a_piscina, botao_a_piscina)
-                pygame.draw.rect(window, branco, botao_branco)
-                pygame.display.update()
-                assets['pew_sound'].play()
-                pygame.time.wait(500)
-                a_piscina=(0,128,128)
-                pygame.draw.rect(window, azul, botao_azul)
-                pygame.draw.rect(window, vermelho, botao_verm)
-                pygame.draw.rect(window, amarelo, botao_amar)
-                pygame.draw.rect(window, verde, botao_verde)
-                pygame.draw.rect(window, azul, botao_azul)
-                pygame.draw.rect(window, roxo, botao_roxo)
-                pygame.draw.rect(window, laranja, botao_laranja)
-                pygame.draw.rect(window, a_piscina, botao_a_piscina)
-                pygame.draw.rect(window, branco, botao_branco)
-                pygame.display.update()
-                pygame.time.wait(500) 
+            pisca (botao)
         aguardando = True
 
        
@@ -263,84 +117,44 @@ while game:
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_q:
                 botao_escolhido = botao_verm
-                vermelho = vermelho_claro
-                pygame.draw.rect(window, vermelho, botao_verm)
-                pygame.display.update()
-                assets['pew_sound'].play()
-                pygame.time.wait(500)
-                vermelho = (100, 0, 0)
-                pygame.draw.rect(window, vermelho, botao_verm)
-                pygame.display.update()
-                tentativa.append(botao_verm)
+                pisca(0)
+                tentativa.append(0)
+                
+            elif event.key == pygame.K_w:
+                botao_escolhido = botao_verde
+                pisca(1)
+                tentativa.append(1)
+                
+            elif event.key == pygame.K_s:
+                botao_escolhido = botao_azul
+                pisca(2)
+                tentativa.append(2)
 
             elif event.key == pygame.K_a:
                 botao_escolhido = botao_amar
-                amarelo = (255, 255, 0)
-                pygame.draw.rect(window, amarelo, botao_amar)
-                pygame.display.update()
-                assets['pew_sound'].play()
-                pygame.time.wait(500)
-                amarelo = (100, 100, 0)
-                pygame.draw.rect(window, amarelo, botao_amar)
-                pygame.display.update()
-                tentativa.append(botao_amar)
-
-            elif event.key == pygame.K_w:
-                botao_escolhido = botao_verde
-                verde = (0, 255, 0)
-                pygame.draw.rect(window, verde, botao_verde)
-                pygame.display.update()
-                assets['pew_sound'].play()
-                pygame.time.wait(500)
-                verde = (0, 100, 0)
-                pygame.draw.rect(window, verde, botao_verde)
-                pygame.display.update()
-                tentativa.append(botao_verde)
-
-            elif event.key == pygame.K_s:
-                botao_escolhido = botao_azul
-                azul = (0, 0, 255)
-                pygame.draw.rect(window, azul, botao_azul)
-                pygame.display.update()
-                assets['pew_sound'].play()
-                pygame.time.wait(500)
-                azul = (0, 0, 100)
-                pygame.draw.rect(window, azul, botao_azul)
-                pygame.display.update()
-                tentativa.append(botao_azul)
-            elif event.key == pygame.K_d:
-                botao_escolhido = botao_laranja
-                laranja = (250,80,0)
-                pygame.draw.rect(window,laranja,botao_laranja)
-                pygame.display.update()
-                assets['pew_sound'].play()
-                pygame.time.wait(500)
-                laranja = (150,80,0)
-                pygame.draw.rect(window,laranja,botao_laranja)
-                pygame.display.update()
-                tentativa.append(botao_laranja)
+                pisca(3)
+                tentativa.append(3)
+                
             elif event.key == pygame.K_e:
                 botao_escolhido = botao_roxo
-                roxo = (220,0,128)
-                pygame.draw.rect(window,roxo,botao_roxo)
-                pygame.display.update()
-                assets['pew_sound'].play()
-                pygame.time.wait(500)
-                roxo = (128,0,128)
-                pygame.draw.rect(window,roxo,botao_roxo)
-                pygame.display.update()
-                tentativa.append(botao_roxo)
+                pisca(4)
+                tentativa.append(4)
+                
+            elif event.key == pygame.K_d:
+                botao_escolhido = botao_laranja
+                pisca(5)
+                tentativa.append(5)
+                
             elif event.key == pygame.K_r:
                 botao_escolhido = botao_a_piscina
-                a_piscina = (0,128,190)
-                pygame.draw.rect(window,a_piscina,botao_a_piscina)
-                pygame.display.update()
-                assets['pew_sound'].play()
-                pygame.time.wait(500)
-                a_piscina = (0,128,128)
-                pygame.draw.rect(window,a_piscina,botao_a_piscina)
-                pygame.display.update()
-                tentativa.append(botao_a_piscina)
+                pisca(6)
+                tentativa.append(6)
+                
+            elif event.key == pygame.K_f:
+                botao_escolhido = botao_branco
+                pisca(7)
+                tentativa.append(7)
+                
             elif event.key == pygame.K_SPACE:
                 aguardando = False
     for botao in tentativa:
@@ -350,7 +164,7 @@ while game:
             score = 0
             tentativa = []
             seq = []
-            seq.append(random.choice(botoes))
+            seq.append(random.randint(0, 8))
             window.blit(imagem,(0,0))
             pygame.display.update()
             pygame.time.wait(2000)
@@ -362,10 +176,8 @@ while game:
         score += 1
         tentativa = []
         aguardando = False
-        seq.append(random.choice(botoes))
+        seq.append(random.randint(0, 8))
         pygame.time.wait(2000)
-
-
 
        
 
