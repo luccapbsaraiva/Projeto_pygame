@@ -100,7 +100,7 @@ def pisca(s):
     pygame.draw.rect(window, a_piscina, botao_a_piscina)
     pygame.draw.rect(window, branco, botao_branco)
     pygame.display.update()
-    pygame.time.wait(500)
+    pygame.time.wait(200)
     
 while game:
     clock.tick(FPS)
@@ -176,7 +176,7 @@ while game:
         score += 1
         tentativa = []
         aguardando = False
-        seq.append(random.randint(0, 8))
+        seq.append(random.randint(0, 7))
         pygame.time.wait(2000)
 
        
