@@ -39,6 +39,7 @@ aceso = [vermelho_claro, verde_claro, azul_claro, amarelo_claro, roxo_claro, lar
 assets = {}
 pygame.mixer.music.set_volume(0.4)
 assets['pew_sound'] = pygame.mixer.Sound('som\pew.wav')
+assets["morreu"] = pygame.mixer.Sound("som/morreu.wav")
 
 
 
@@ -60,7 +61,7 @@ botoes = [botao_verm, botao_verde, botao_azul, botao_amar, botao_roxo, botao_lar
 seq = []
 score = 0
 tentativa = []
-seq.append(random.randint(0, 8))
+seq.append(random.randint(0, 7))
 text = font.render('os botoes de jogo são: Q W E R A S D F', True, (0, 0, 255))
 aguardando = False
 inicio = True
@@ -164,8 +165,9 @@ while game:
             score = 0
             tentativa = []
             seq = []
-            seq.append(random.randint(0, 8))
+            seq.append(random.randint(0, 7))
             window.blit(imagem,(0,0))
+            assets["morreu"].play()
             pygame.display.update()
             pygame.time.wait(2000)
             aguardando = False
