@@ -8,9 +8,9 @@ window = pygame.display.set_mode((1250, 600 ))
 pygame.display.set_caption('Botões')
 
 font = pygame.font.SysFont(None, 48)
-imagem = pygame.image.load("Assets/voceperdeu.jpg")
+imagem = pygame.image.load("som/voceperdeu.jpg")
 imagem = pygame.transform.scale(imagem, (1250, 600))
-imagem2= pygame.image.load("Assets/start.png")
+imagem2= pygame.image.load("som/start.png")
 imagem2 = pygame.transform.scale(imagem2, (1250, 600))
 
 
@@ -34,12 +34,12 @@ a_piscina_claro = (0, 255, 255)
 branco_claro = (255, 255, 255)
 aceso = [vermelho_claro, verde_claro, azul_claro, amarelo_claro, roxo_claro, laranja_claro, a_piscina_claro, branco_claro]
 
-
+teclas = [pygame.K_q, pygame.K_w, pygame.K_s, pygame.K_a, pygame.K_e, pygame.K_d, pygame.K_r, pygame.K_f]
 
 assets = {}
 pygame.mixer.music.set_volume(0.4)
-assets['pew_sound'] = pygame.mixer.Sound('Assets\pew.wav')
-assets['pew_sound-5'] = pygame.mixer.Sound('Assets\pew-5.wav')
+assets['pew_sound'] = pygame.mixer.Sound('som\pew.wav')
+assets["morreu"] = pygame.mixer.Sound("som/morreu.wav")
 
 
 
@@ -80,7 +80,7 @@ window.fill((0,0,0))
 pygame.display.update()   
 pygame.time.wait(500)
 
-def pisca(s, som):
+def pisca(s):
     pygame.draw.rect(window, aceso[s], botoes[s])
     pygame.draw.rect(window, cor[s-1], botoes[s-1])
     pygame.draw.rect(window, cor[s-2], botoes[s-2])
@@ -90,7 +90,7 @@ def pisca(s, som):
     pygame.draw.rect(window, cor[s-6], botoes[s-6])
     pygame.draw.rect(window, cor[s-7], botoes[s-7])
     pygame.display.update()
-    assets[som].play()
+    assets['pew_sound'].play()
     pygame.time.wait(500)
     pygame.draw.rect(window, vermelho, botao_verm)
     pygame.draw.rect(window, amarelo, botao_amar)
@@ -103,12 +103,23 @@ def pisca(s, som):
     pygame.display.update()
     pygame.time.wait(200)
     
+def escolhe_tecla(key):
+    if event.key == pygame.K_SPACE:
+        aguardando = False
+    else:
+        if key not in teclas:
+            pass
+        else:
+            tecla = teclas.index(key)
+            pisca(tecla)
+            tentativa.append(tecla)
+    
 while game:
     clock.tick(FPS)
     pygame.time.wait(3)
     while aguardando == False: 
         for botao in seq:
-            pisca (botao, 'pew_sound')
+            pisca (botao)
         aguardando = True
 
        
@@ -116,48 +127,8 @@ while game:
         if event.type == pygame.QUIT:
             game = False
         if event.type == pygame.KEYUP:
-            if event.key == pygame.K_q:
-                botao_escolhido = botao_verm
-                pisca(0, 'pew_sound')
-                tentativa.append(0)
-                
-            elif event.key == pygame.K_w:
-                botao_escolhido = botao_verde
-                pisca(1, 'pew_sound')
-                tentativa.append(1)
-                
-            elif event.key == pygame.K_s:
-                botao_escolhido = botao_azul
-                pisca(2, 'pew_sound')
-                tentativa.append(2)
-
-            elif event.key == pygame.K_a:
-                botao_escolhido = botao_amar
-                pisca(3, 'pew_sound')
-                tentativa.append(3)
-                
-            elif event.key == pygame.K_e:
-                botao_escolhido = botao_roxo
-                pisca(4, 'pew_sound')
-                tentativa.append(4)
-                
-            elif event.key == pygame.K_d:
-                botao_escolhido = botao_laranja
-                pisca(5, 'pew_sound')
-                tentativa.append(5)
-                
-            elif event.key == pygame.K_r:
-                botao_escolhido = botao_a_piscina
-                pisca(6, 'pew_sound')
-                tentativa.append(6)
-                
-            elif event.key == pygame.K_f:
-                botao_escolhido = botao_branco
-                pisca(7, 'pew_sound')
-                tentativa.append(7)
-                
-            elif event.key == pygame.K_SPACE:
-                aguardando = False
+            escolhe_tecla (event.key)
+            
     for botao in tentativa:
         if seq[tentativa.index(botao)] == botao:
             pass
@@ -167,10 +138,12 @@ while game:
             seq = []
             seq.append(random.randint(0, 7))
             window.blit(imagem,(0,0))
+            assets["morreu"].play()
             pygame.display.update()
             pygame.time.wait(2000)
             aguardando = False
-         
+            
+    
     if seq == tentativa:
         score += 1
         tentativa = []
