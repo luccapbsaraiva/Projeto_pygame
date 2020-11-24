@@ -11,7 +11,7 @@ font = pygame.font.SysFont(None, 48)
 imagem = pygame.image.load("som/voceperdeu.jpg")
 imagem = pygame.transform.scale(imagem, (1250, 600))
 imagem2= pygame.image.load("som/start.png")
-imagem2 = pygame.transform.scale(imagem2, (1250, 600))
+imagem2 = pygame.transform.scale(imagem2, (1250, 500))
 
 
 vermelho = (100, 0, 0)
@@ -62,20 +62,46 @@ seq = []
 score = 0
 tentativa = []
 seq.append(random.randint(0, 7))
-text = font.render('os botoes de jogo são: Q W E R A S D F', True, (0, 0, 255))
+iniciar =  font.render ("Clique em qualquer tecla para começar o jogo", True, (255, 255, 255))
+BEM_VINDO = font.render("BEM VINDO AO GENIUS!", True, (128, 128, 128))
+text = font.render('os botoes de jogo são:', True, (0, 0, 255))
+Q = font.render("Q", True, vermelho_claro)
+W = font.render("W", True, verde_claro)
+E = font.render("E", True, roxo_claro)
+R = font.render("R", True, a_piscina_claro)
+A = font.render("A", True, amarelo_claro)
+S = font.render("S", True, azul_claro)
+D = font.render("D", True, laranja_claro)
+F = font.render("F", True, branco_claro)
+regra = font.render("Com as teclas de jogo, reproduza a sequência apresentada", True, (128, 128, 128))
+opcao = font.render("Caso precise rever a sequência tecle SPACE", True, (128, 128, 128))
+perde = font.render("Se você errar a sequência perde o jogo", True, (128, 128, 128))
 aguardando = False
 inicio = True
 while inicio:
     window.blit(imagem2,(0,0))
+    window.blit(iniciar, (0, 550))
     pygame.display.update()
     for event in pygame.event.get():
         if event.type == pygame.KEYUP:
             inicio = False
 pygame.time.wait(2000)
 window.fill((0,0,0))
-window.blit(text,(200,250))
+window.blit(BEM_VINDO, (500, 50))
+window.blit(text,(150,150))
+window.blit(Q,(200, 250))
+window.blit(W,(250, 250))
+window.blit(E,(300, 250))
+window.blit(R,(350, 250))
+window.blit(A,(200, 300))
+window.blit(S,(250, 300))
+window.blit(D,(300, 300))
+window.blit(F,(350, 300))
+window.blit(regra, (150, 400))
+window.blit(opcao, (150, 450))
+window.blit(perde, (150, 500))
 pygame.display.update()   
-pygame.time.wait(3000)
+pygame.time.wait(10000)
 window.fill((0,0,0))
 pygame.display.update()   
 pygame.time.wait(500)
