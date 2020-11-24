@@ -130,15 +130,12 @@ def pisca(s):
     pygame.time.wait(200)
     
 def escolhe_tecla(key):
-    if event.key == pygame.K_SPACE:
-        aguardando = False
+    if key not in teclas:
+        pass
     else:
-        if key not in teclas:
-            pass
-        else:
-            tecla = teclas.index(key)
-            pisca(tecla)
-            tentativa.append(tecla)
+        tecla = teclas.index(key)
+        pisca(tecla)
+        tentativa.append(tecla)
     
 while game:
     clock.tick(FPS)
@@ -153,7 +150,10 @@ while game:
         if event.type == pygame.QUIT:
             game = False
         if event.type == pygame.KEYUP:
-            escolhe_tecla (event.key)
+            if event.key == pygame.K_SPACE:
+                aguardando = False
+            else:
+                escolhe_tecla(event.key)
             
     for botao in tentativa:
         if seq[tentativa.index(botao)] == botao:
