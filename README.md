@@ -17,13 +17,21 @@
    as teclas correspondentes a cada botão são as seguintes:
    
    Q -> Vermelho
+   
    W -> Verde
+   
    E -> Roxo
+   
    R -> Azul claro
+   
    A -> Amarelo
+   
    S -> Azul escuro
+   
    D -> Laranja
+   
    F -> Branco
+   
    A barra de espaço repete a sequencia ao jogador para que ele tenha mais tentativas de memorizá-la.
    
    Para rodar o programa será necessário obter do repositório não somente o arquivo .py presente, mas tambem a pasta 'som' que possuí arquivos de recursos auxiliares do jogo.
