@@ -101,7 +101,7 @@ window.blit(regra, (150, 400))
 window.blit(opcao, (150, 450))
 window.blit(perde, (150, 500))
 pygame.display.update()   
-pygame.time.wait(10000)
+pygame.time.wait(8000)
 window.fill((0,0,0))
 pygame.display.update()   
 pygame.time.wait(500)
@@ -152,6 +152,7 @@ while game:
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_SPACE:
                 aguardando = False
+                tentativa = []
             else:
                 escolhe_tecla(event.key)
             
