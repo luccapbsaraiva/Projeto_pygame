@@ -1,3 +1,8 @@
+#EQUIPE:
+#ALICE LONGMAN
+#LUCCA SARAIVA
+#PEDRO VON DANNECKER
+
 import pygame
 import random
 import sys
